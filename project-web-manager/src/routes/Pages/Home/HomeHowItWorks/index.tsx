@@ -14,7 +14,7 @@ export function HomeHowItWorks() {
       <div className='pb-4'>
         <h1 className='text-3xl font-semibold text-center'>Cotas a partir de R$ 1.200</h1>
       </div>
-      <div className='flex flex-col xl:flex-row gap-5'>
+      <div className='flex flex-col xl:flex-row gap-5 items-center'>
         <div className='border-2 border-blue-200 rounded-lg p-4'>
           <img src={carPurchase} alt='Compra de carro' className='rounded-lg' />
         </div>
