@@ -1,0 +1,22 @@
+.bg-image {
+  background-image: url(../../../../assets/images/bg-image.png);
+}
+
+.container-logo img {
+  width: auto;
+  height: 60px;
+}
+
+.bg-input {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-bg {
+  background-color: #000093;
+  box-decoration-break: clone;
+  line-height: 1.5;
+}
+
+.button-color {
+  background-color: #000093;
+}
