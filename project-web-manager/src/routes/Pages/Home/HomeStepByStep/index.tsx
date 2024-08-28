@@ -27,8 +27,7 @@ export function HomeStepByStep() {
         <div className="p-3 mb-4 border-2 border-blue-800 rounded-xl md:mr-4 md:mb-0">
           <h4 className="text-lg font-semibold ">2° PASSO</h4>
           <p>
-            Assine o contrato de investimento, realize o pagamento e aguarde a
-            ativação da conta.
+            Aguarde que em breve nossa equipe entrará em contato.
           </p>
         </div>
         <div className="p-3 mb-4 border-2 border-blue-800 rounded-xl md:mb-0">
