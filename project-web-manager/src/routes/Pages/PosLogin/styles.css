@@ -1,0 +1,21 @@
+.bg-image {
+  background-image: url(../../../assets/images/bg-image.png);
+}
+
+.container-logo img {
+  width: auto;
+  height: 120px;
+}
+.modal-center-box-register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+}
+
+@media (max-width: 992px) {
+  .modal-center-box-register {
+    width: 90%;
+  }
+}

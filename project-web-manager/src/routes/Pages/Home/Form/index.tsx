@@ -43,7 +43,7 @@ export function Form() {
       type: "email",
       placeholder: "E-mail",
       validation: function (value: string) {
-        return validation.lengthDefaultValidation(value);
+        return validation.emailValidation(value);
       },
       message: "E-mail inválido, verifique",
     },
@@ -110,8 +110,8 @@ export function Form() {
 
     const request = investidorService.RegisterInvestidor(requestBody);
 
-    request.then((response) => {
-
+    request.then(() => {
+      navigate('pos-register')
     });
   }
 
@@ -201,10 +201,9 @@ export function Form() {
               />
             </div>
             <div className='flex align-middle text-[9px] pb-4'>
-              <Checkbox id='terms' className='mr-1' />
               <Label htmlFor='terms' className='text-white font-bold text-xs'>
-                ACEITO A POLÍTICA DE PRIVACIDADE DE DADOS E OS
-                TERMOS E CONDIÇÕES DE USO
+                Ao enviar este formulário, você concorda com o uso de seus dados pessoais pela RSX Capital,
+                conforme a LGPD, para fins de comunicação e atendimento. Consulte nossa Política de Privacidade e os Termos e Condições de Uso.
               </Label>
             </div>
             <div className='pl-3 pr-3'>
