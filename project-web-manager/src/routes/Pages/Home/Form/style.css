@@ -20,3 +20,23 @@
 .button-color {
   background-color: #000093;
 }
+
+.base-input[data-invalid="true"][data-dirty="true"] ~ div {
+  display: unset;
+}
+
+.base-input[data-invalid="true"][data-dirty="true"] {
+  border: 1px solid var(--danger-color);
+}
+
+.form-error {
+  color: #d4d4d4;
+  font-size: 0.875rem;
+  padding-left: 4px;
+  display: none;
+}
+
+.form-select-container {
+  padding: unset;
+  height: unset;
+}
