@@ -79,8 +79,6 @@ export function PagamentoEdit() {
     },
   });
 
-  const [errorMessage, setErrorMessage] = useState('');
-
   const params = useParams();
 
   const navigate = useNavigate();
@@ -125,7 +123,7 @@ export function PagamentoEdit() {
 
     requestBody.data_Pagamento = formatters.convertData(requestBody.data_Pagamento);
 
-    var response = pagamentoService.updatePagamento(Number(params.pagamentoId), requestBody)
+    let response = pagamentoService.updatePagamento(Number(params.pagamentoId), requestBody)
 
     response.then(() => {
       navigate(-1);

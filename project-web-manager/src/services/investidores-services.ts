@@ -23,3 +23,25 @@ export async function getAllInvestidores(page: number) {
 
   return await requestBackend(config);
 }
+
+export async function acceptInvestidor(id: number, data: any) {
+  const config: AxiosRequestConfig = {
+    method: 'PUT',
+    url: `investidores/${id}/accept`,
+    withCredentials: true,
+    data,
+  };
+
+  return await requestBackend(config);
+}
+
+export async function refuseInvestidor(id: number, data: any) {
+  const config: AxiosRequestConfig = {
+    method: 'PUT',
+    url: `investidores/${id}/refuse`,
+    withCredentials: true,
+    data,
+  };
+
+  return await requestBackend(config);
+}
