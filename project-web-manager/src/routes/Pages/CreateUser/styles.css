@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 900px;
-  background-color: #eee;
+  background-color: #ddd;
 }
 
 @media (max-width: 992px) {
@@ -17,4 +17,11 @@
   .button-font-size {
     font-size: 0.875rem;
   }
+}
+
+.form-error {
+  color: #c51414;
+  font-size: 0.875rem;
+  padding-left: 4px;
+  display: none;
 }

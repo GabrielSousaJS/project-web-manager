@@ -1,6 +1,5 @@
 import './style.css'
 import logo from '../../../../assets/images/short-logo.png'
-import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
@@ -103,12 +102,16 @@ export function Form() {
       values = { ...values, valor_Cotas: { ...values.valor_Cotas, value: '6000' } }
     }
 
+    if (values.valor_Cotas.value === '') {
+      values = { ...values, valor_Cotas: { ...values.valor_Cotas, value: '1200' } }
+    }
+
     const requestBody = {
       ...values,
       valor_Cotas: values.valor_Cotas.value
     }
 
-    const request = investidorService.RegisterInvestidor(requestBody);
+    const request = investidorService.registerInvestidor(requestBody);
 
     request.then(() => {
       navigate('pos-register')

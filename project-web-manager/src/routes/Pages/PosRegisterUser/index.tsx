@@ -1,20 +1,17 @@
-import './styles.css'
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import logo from '../../../assets/images/logo.png';
 
-import logo from '../../../assets/images/logo.png'
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-export function PosLogin() {
+export function PosRegisterUser() {
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate(-1);
+      navigate('/login');
     }, 5000);
 
     return () => clearTimeout(timer);
   }, [navigate])
-
   return (
     <main className='bg-image bg-cover pt-10 pb-10 h-screen'>
       <div className='modal-center-box-register'>
@@ -31,11 +28,11 @@ export function PosLogin() {
               </h1>
               <h1 className='text-4xl mb-4 font-bold text-white'>
                 <span className='text-bg pl-3 pr-3 rounded-md'>
-                  Redirecionando para a página de investidor
+                  Cadastro finalizado, faça login para acessar a plataforma.
                 </span>
               </h1>
               <p className='text-white pl-3 pr-3'>
-                Acompanhe sua renda aumentando com a RSX Capital
+                Seja-bem vindo a RSX Capital.
               </p>
             </div>
           </div>
