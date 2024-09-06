@@ -1,7 +1,7 @@
 import { ResponseCotasInvestimento } from './cotas-investimento';
 
 export type CotasInvestimentoPaged = {
-  cotasInvestimentos: ResponseCotasInvestimento[];
+  cotasInvestimento: ResponseCotasInvestimento[];
   currentPage: number,
   totalPages: number,
 }

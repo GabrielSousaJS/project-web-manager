@@ -79,7 +79,7 @@ export function Login() {
     request.then((response) => {
       loginService.saveAccessToken(response.data.token);
       setContextTokenPayload(loginService.getAccessTokenPayload());
-      navigate('/cliente/pagamentos')
+      navigate('/cliente/dashboard')
     }).catch((error) => {
       setErrorMessage(error.response.data.errorMessages[0])
     })

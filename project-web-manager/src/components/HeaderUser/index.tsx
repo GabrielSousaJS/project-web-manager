@@ -11,15 +11,15 @@ export function HeaderUser() {
           <img src={logo} alt="Logo RSX Capital" />
         </div>
         <div className='space-x-12'>
-          <Link to='#' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
+          <Link to='/cliente/dashboard' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
             Dashboard
           </Link>
           {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) && 
             (<Link to='/cliente/cadastros' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
               Cadastros
             </Link>)}
-          <Link to='#' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
-            Rendimentos
+          <Link to='/cliente/cotas' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
+            Cotas
           </Link>
           <Link to='/cliente/pagamentos' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
             Pagamentos

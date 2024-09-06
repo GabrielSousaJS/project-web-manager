@@ -13,6 +13,10 @@ import * as authService from './services/login-service';
 import { ContextToken } from "./utils/context-token";
 import { FormPagamento } from "./routes/Pages/Cliente/Pagamento/PagamentoForm";
 import { PagamentoEdit } from "./routes/Pages/Cliente/Pagamento/PagamentoEdit";
+import { CotasInvestimento } from "./routes/Pages/Cliente/CotasInvestimento";
+import { CotasInvestimentoForm } from "./routes/Pages/Cliente/CotasInvestimento/CotasInvestimentoForm";
+import { CotasInvestimentoEdit } from "./routes/Pages/Cliente/CotasInvestimento/CotasInvestimentoEdit";
+import { Dashboard } from "./routes/Pages/Cliente/Dashboard";
 
 export function App() {
   const [contextTokenPayload, setContextTokenPayload] = useState<AccessTokenPayload>();
@@ -34,11 +38,15 @@ export function App() {
           <Route path='pos-login' element={<PosLogin />} />
           <Route path='pos-register-user' element={<PosRegisterUser />} />
           <Route path='cliente' element={<ClienteHome />}>
-            <Route index element={<Navigate to='/pagamentos' />} />
+            <Route index element={<Navigate to='/dashboard' />} />
+            <Route path='dashboard' element={<Dashboard />} />F
             <Route path='pagamentos' element={<Pagamento />} />
             <Route path='pagamentos/inserir' element={<FormPagamento />} />
             <Route path='pagamentos/:pagamentoId' element={<PagamentoEdit />} />
             <Route path='cadastros' element={<Cadastro />} />
+            <Route path='cotas' element={<CotasInvestimento />} />
+            <Route path='cotas/inserir' element={<CotasInvestimentoForm />} />
+            <Route path='cotas/:cotasId' element={<CotasInvestimentoEdit />} />
           </Route>
         </Routes>
       </BrowserRouter>

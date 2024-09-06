@@ -55,7 +55,9 @@ export function Cadastro() {
         </div>))}
       </div>
 
-      {investidores?.investidores.length !== 0 && (<Pagination pageCount={investidores ? investidores.totalPages : 0} range={3} onChange={getAllInvestidores} />)}
+      <div className='mb-4'>
+        {investidores?.investidores.length !== 0 && (<Pagination pageCount={investidores ? investidores.totalPages : 0} range={3} onChange={getAllInvestidores} />)}
+      </div>
     </main>
   );
 }

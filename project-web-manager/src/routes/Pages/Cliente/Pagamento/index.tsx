@@ -12,7 +12,7 @@ export function Pagamento() {
 
   useEffect(() => {
     if (loginService.isAuthenticated()) {
-      getAllPagamentos(0)
+      getAllPagamentos(0);
     }
   }, [])
 
@@ -71,7 +71,9 @@ export function Pagamento() {
         </div>))}
       </div>
 
-      {pagamentos?.pagamentos.length !== 0 && (<Pagination pageCount={pagamentos ? pagamentos.totalPages : 0} range={3} onChange={getAllPagamentos} />)}
+      <div className='mb-4'>
+        {pagamentos?.pagamentos.length !== 0 && (<Pagination pageCount={pagamentos ? pagamentos.totalPages : 0} range={3} onChange={getAllPagamentos} />)}
+      </div>
     </main>
   );
 }
