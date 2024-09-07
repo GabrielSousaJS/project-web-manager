@@ -1,5 +1,4 @@
 import { InvestidorCard } from "@/components/InvestidorCard";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import * as investidorService from '../../../../services/investidores-services';
 import * as loginService from '../../../../services/login-service';

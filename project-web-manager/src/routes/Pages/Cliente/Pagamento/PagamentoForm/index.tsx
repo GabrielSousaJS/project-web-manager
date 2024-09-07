@@ -78,8 +78,6 @@ export function FormPagamento() {
     },
   });
 
-  const [errorMessage, setErrorMessage] = useState('');
-
   const navigate = useNavigate();
 
   function handleTurnDirty(name: string) {
@@ -115,9 +113,6 @@ export function FormPagamento() {
     request.then(() => {
       navigate('/cliente/pagamentos')
     })
-      .catch(() => {
-        setErrorMessage('Erro a adicionar pagamento.');
-      })
   }
 
   return (

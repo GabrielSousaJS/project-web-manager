@@ -2,15 +2,12 @@ import { ResponseInvestidorJson } from "@/models/investidor";
 import * as formatters from '../../utils/formatters';
 import { Button } from "../ui/button";
 import * as investidoresService from '../../services/investidores-services';
-import { useNavigate, useParams } from "react-router-dom";
 
 type Props = {
   investidor: ResponseInvestidorJson
 }
 
 export function InvestidorCard({ investidor }: Props) {
-  const navigate = useNavigate();
-
   function handleAcceptInvestidor() {
     let requestBody = {
       status: 'Aceito',

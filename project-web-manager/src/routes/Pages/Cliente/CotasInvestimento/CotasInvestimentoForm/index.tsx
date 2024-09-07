@@ -32,8 +32,6 @@ export function CotasInvestimentoForm() {
     }
   })
 
-  const [errorMessage, setErrorMessage] = useState('');
-
   const navigate = useNavigate();
 
   function handleTurnDirty(name: string) {
@@ -67,9 +65,6 @@ export function CotasInvestimentoForm() {
     request.then(() => {
       navigate('/cliente/cotas')
     })
-      .catch(() => {
-        setErrorMessage('Erro a adicionar pagamento.');
-      })
   }
 
   return (
