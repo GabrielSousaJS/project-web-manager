@@ -49,12 +49,14 @@ export function CotasInvestimento() {
         <div className='col-span-2 text-center'>
           <span>MESES DE APLICAÇÃO</span>
         </div>
-        <div className='col-span-3 text-center'>
+        <div className={`${loginService.isAuthenticated() && loginService.hasAnyRole(['1']) ? 'col-span-3' : 'col-span-4'}  text-center`}>
           <span>DATA DE APLICAÇÃO</span>
         </div>
-        <div className='col-span-1 text-center'>
-          <span>AÇÃO</span>
-        </div>
+        {loginService.isAuthenticated() && loginService.hasAnyRole(['1']) && (
+          <div className='col-span-1 text-center'>
+            <span>AÇÃO</span>
+          </div>
+        )}
       </div>
       <div className='space-y-4 pt-2 mb-4'>
         {cotasInvestimento?.cotasInvestimento.map((cota) => (<div className='border-b-2 pb-2' key={cota.id_Cota}>

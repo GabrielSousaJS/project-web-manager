@@ -31,7 +31,7 @@ export function Pagamento() {
   return (
     <main className='container'>
       <div className='flex justify-between pb-3 pt-4 border-b-2'>
-        <h1 className="text-4xl font-semibold">Rendimentos</h1>
+        <h1 className="text-4xl font-semibold">Pagamentos</h1>
         {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) &&
           (
             <div className='space-x-8'>
@@ -58,12 +58,14 @@ export function Pagamento() {
         <div className='col-span-1 text-center'>
           <span>STATUS</span>
         </div>
-        <div className='col-span-2 text-center'>
+        <div className={`${loginService.isAuthenticated() && loginService.hasAnyRole(['1']) ? 'col-span-2' : 'col-span-3'} text-center`}>
           <span>DT. PAGAMENTO</span>
         </div>
-        <div className="col-span-1 text-center">
-          <span>AÇÃO</span>
-        </div>
+        {loginService.isAuthenticated() && loginService.hasAnyRole(['1']) && (
+          <div className="col-span-1 text-center">
+            <span>AÇÃO</span>
+          </div>
+        )}
       </div>
       <div className='space-y-4 pt-2 mb-4'>
         {pagamentos?.pagamentos.map((pagamento) => (<div className='border-b-2 pb-2' key={pagamento.id_pagamento}>
