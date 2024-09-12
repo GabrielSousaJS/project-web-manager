@@ -30,16 +30,16 @@ export function CotasInvestimento() {
 
   return (
     <main className='container'>
-      <div className='flex justify-between pb-3 pt-4 border-b-2'>
-        <h1 className="text-4xl font-semibold">Cotas para Investimento</h1>
-        {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) &&
+      <div className='flex flex-col lg:flex-row justify-between pb-3 pt-4 border-b-2'>
+        <h1 className='text-xl lg:text-4xl font-semibold mb-2 lg:mb-0'>Cotas para Investimento</h1>
+        {loginService.isAuthenticated() && loginService.hasAnyRole(['1']) &&
           (
             <div className='space-x-8'>
-              <Button onClick={handleNavigateForm}>Adicionar Cota para Investimento</Button>
+              <Button onClick={handleNavigateForm}>Adicionar Cota</Button>
             </div>
           )}
       </div>
-      <div className='grid grid-cols-12 gap-4 text-sm mt-4 border-b-4 pb-2'>
+      <div className='hidden lg:grid lg:grid-cols-12 lg:gap-4 text-sm mt-4 border-b-4 pb-2'>
         <div className='col-span-3 text-center'>
           <span>INVESTIDOR</span>
         </div>

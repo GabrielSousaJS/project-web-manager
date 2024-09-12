@@ -12,7 +12,7 @@ export function PagamentoCard({ pagamento }: Props) {
   const navigate = useNavigate();
 
   return (
-    <div className='grid grid-cols-12 gap-4'>
+    <div className='xl:grid xl:grid-cols-12 xl:gap-4'>
       <div className='col-span-1 text-center'>
         <span>{<p>{pagamento.id_Pagamento}</p>}</span>
       </div>

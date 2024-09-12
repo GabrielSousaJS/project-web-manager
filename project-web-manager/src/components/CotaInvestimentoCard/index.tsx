@@ -12,7 +12,7 @@ export function CotaInvestimentoCard({ cotaInvestimento }: Props) {
   const navigate = useNavigate();
 
   return (
-    <div className='grid grid-cols-12 gap-4'>
+    <div className='lg:grid lg:grid-cols-12 lg:gap-4'>
       <div className='col-span-3 text-center'>
         <span>{<p>{`${cotaInvestimento.nome} ${cotaInvestimento.sobrenome}`}</p>}</span>
       </div>

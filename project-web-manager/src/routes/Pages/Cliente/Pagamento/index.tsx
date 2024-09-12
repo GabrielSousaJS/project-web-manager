@@ -30,8 +30,8 @@ export function Pagamento() {
 
   return (
     <main className='container'>
-      <div className='flex justify-between pb-3 pt-4 border-b-2'>
-        <h1 className="text-4xl font-semibold">Pagamentos</h1>
+      <div className='flex justify-between flex-col xl:flex-row pb-3 pt-4 border-b-2'>
+        <h1 className="text-xl lg:text-4xl font-semibold mb-2 xl:mb-0">Pagamentos</h1>
         {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) &&
           (
             <div className='space-x-8'>
@@ -39,7 +39,7 @@ export function Pagamento() {
             </div>
           )}
       </div>
-      <div className='grid grid-cols-12 gap-4 text-sm mt-4 border-b-4 pb-2'>
+      <div className='hidden xl:grid xl:grid-cols-12 xl:gap-4 text-sm mt-4 border-b-4 pb-2'>
         <div className='col-span-1 text-center'>
           <span>ID PAGAMENTO</span>
         </div>

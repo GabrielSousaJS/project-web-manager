@@ -23,9 +23,9 @@ export function Cadastro() {
   return (
     <main className='container'>
       <div className='flex justify-between pb-3 pt-4 border-b-2'>
-        <h1 className="text-4xl font-semibold">Cadastros</h1>
+        <h1 className="text-xl lg:text-4xl font-semibold">Cadastros</h1>
       </div>
-      <div className='grid grid-cols-12 gap-4 text-sm mt-4 border-b-4 pb-2'>
+      <div className='hidden xl:grid xl:grid-cols-12 xl:gap-4 text-sm mt-4 border-b-4 pb-2'>
         <div className='col-span-2 text-center'>
           <span>NOME</span>
         </div>
