@@ -31,7 +31,7 @@ export function FormPassword(props: any) {
         onBlur={handleBlur}
       />
         <button onClick={onChangeType}>
-          <img
+          <img   
             src={inputProps.type === "password" ? hideIcon : showIcon}
             alt=""
           />

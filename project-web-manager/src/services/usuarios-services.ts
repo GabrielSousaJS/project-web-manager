@@ -10,3 +10,16 @@ export function registerUsuario(data: any) {
 
   return requestBackend(config);
 }
+
+export async function getAllUsers(page: number) {
+  const config: AxiosRequestConfig = {
+    method: 'GET',
+    url: 'user',
+    withCredentials: true,
+    headers: {
+      page
+    }
+  }
+
+  return await requestBackend(config);
+}

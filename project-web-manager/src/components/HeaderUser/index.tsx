@@ -19,7 +19,7 @@ export function HeaderUser() {
           <Link to='/cliente/dashboard' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
             Dashboard
           </Link>
-          {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) && 
+          {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) &&
             (<Link to='/cliente/cadastros' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
               Cadastros
             </Link>)}
@@ -29,11 +29,15 @@ export function HeaderUser() {
           <Link to='/cliente/pagamentos' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
             Pagamentos
           </Link>
+          {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) &&
+            (<Link to='/cliente/usuarios' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl'>
+              Usuários
+            </Link>)}
         </nav>
 
         {/* Hamburger button for mobile */}
-        <button 
-          className='md:hidden text-white focus:outline-none' 
+        <button
+          className='md:hidden text-white focus:outline-none'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
@@ -48,7 +52,7 @@ export function HeaderUser() {
               <Link to='/cliente/dashboard' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl' onClick={() => setIsMenuOpen(false)}>
                 Dashboard
               </Link>
-              {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) && 
+              {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) &&
                 (<Link to='/cliente/cadastros' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl' onClick={() => setIsMenuOpen(false)}>
                   Cadastros
                 </Link>)}
@@ -58,6 +62,10 @@ export function HeaderUser() {
               <Link to='/cliente/pagamentos' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl' onClick={() => setIsMenuOpen(false)}>
                 Pagamentos
               </Link>
+              {loginService.isAuthenticated() && loginService.hasAnyRole(["1"]) &&
+                (<Link to='/cliente/usuarios' className='font-semibold text-white hover:bg-blue-800 p-3 hover:rounded-xl' onClick={() => setIsMenuOpen(false)}>
+                  Usuários
+                </Link>)}
             </div>
           </nav>
         )}

@@ -14,6 +14,16 @@ export function login(data: any) {
   return requestBackend(config);
 }
 
+export async function disableLogin(id_Usuario: number) {
+  const config: AxiosRequestConfig = {
+    method: 'PUT',
+    url: `login/${id_Usuario}`,
+    withCredentials: true,
+  }
+
+  return await requestBackend(config);
+}
+
 export function saveAccessToken(token: string) {
   accessTokenRepository.saveAuthData(token);
 }
