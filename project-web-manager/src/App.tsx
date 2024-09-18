@@ -18,6 +18,7 @@ import { CotasInvestimentoForm } from './routes/Pages/Cliente/CotasInvestimento/
 import { CotasInvestimentoEdit } from './routes/Pages/Cliente/CotasInvestimento/CotasInvestimentoEdit';
 import { Dashboard } from './routes/Pages/Cliente/Dashboard';
 import Usuarios from './routes/Pages/Cliente/Usuarios';
+import { NotFound } from './routes/Pages/NotFound';
 
 export function App() {
   const [contextTokenPayload, setContextTokenPayload] = useState<AccessTokenPayload>();
@@ -50,6 +51,7 @@ export function App() {
             <Route path='cotas/:cotasId' element={<CotasInvestimentoEdit />} />
             <Route path='usuarios' element={<Usuarios />} />
           </Route>
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ContextToken.Provider>
