@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as validation from '../../../../../utils/validations';
 import * as forms from '../../../../../utils/forms';
 import { useNavigate } from "react-router-dom";
@@ -7,8 +7,13 @@ import FormInput from "@/components/FormInput";
 import { Button } from "@/components/ui/button";
 import * as formatters from '../../../../../utils/formatters';
 import * as pagamentoService from '../../../../../services/pagamentos-service';
+import { ResponseShortInvestidorJson } from "@/models/investidor";
+import * as investidoresService from '../../../../../services/investidores-services';
+import FormSelect from "@/components/FormSelect";
 
 export function FormPagamento() {
+  const [investidoresAtivos, setInvestidoresAtivos] = useState<ResponseShortInvestidorJson[]>();
+
   const [formData, setFormData] = useState({
     grupo: {
       value: "",
@@ -76,7 +81,24 @@ export function FormPagamento() {
       },
       message: "Data de pagamento não pode ser vazia.",
     },
+    id_Investidor: {
+      value: [],
+      id: 'id_Investidor',
+      name: 'id_Investidor',
+      type: 'number',
+      placeholder: 'Investidor',
+    }
   });
+
+  useEffect(() => {
+    getInvestidoresAtivos();
+  }, [])
+
+  function getInvestidoresAtivos() {
+    investidoresService.getAllInvestidoresAtivos().then((response) => {
+      setInvestidoresAtivos(response.data.investidores);
+    })
+  }
 
   const navigate = useNavigate();
 
@@ -108,6 +130,10 @@ export function FormPagamento() {
 
     requestBody.data_Pagamento = formatters.convertData(requestBody.data_Pagamento);
 
+    requestBody.id_Investidor = requestBody.id_Investidor.id_Investidor;
+
+    console.log(requestBody)
+
     let request = pagamentoService.addPagamento(requestBody);
 
     request.then(() => {
@@ -126,6 +152,24 @@ export function FormPagamento() {
       </div>
 
       <form onSubmit={handleSubmit}>
+        <div className='mb-4'>
+          <FormSelect
+            {...formData.id_Investidor}
+            className='form-control'
+            options={investidoresAtivos}
+            onChange={(obj: any) => {
+              const newFormData = forms.updateAndValidate(
+                formData,
+                'id_Investidor',
+                obj
+              );
+              setFormData(newFormData);
+            }}
+            getOptionLabel={(obj: any) => `${obj.nome} ${obj.sobrenome}`}
+            getOptionValue={(obj: any) => String(obj.id_Investidor)}
+            onTurnDirty={handleTurnDirty}
+          />
+        </div>
         <div className="mb-4">
           <FormInput
             {...formData.grupo}

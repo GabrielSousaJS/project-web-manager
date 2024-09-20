@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../../../../../assets/images/short-logo.png';
 import FormInput from '@/components/FormInput';
 import { useNavigate } from 'react-router-dom';
 import * as forms from '../../../../../utils/forms';
 import { Button } from '@/components/ui/button';
 import * as cotasServices from '../../../../../services/cotas-investimento-service';
+import * as investidoresService from '../../../../../services/investidores-services';
+import FormSelect from '@/components/FormSelect';
+import { ResponseShortInvestidorJson } from '@/models/investidor';
 
 export function CotasInvestimentoForm() {
+  const [investidoresAtivos, setInvestidoresAtivos] = useState<ResponseShortInvestidorJson[]>();
+
   const [formData, setFormData] = useState({
     valor_Aplicado: {
       value: "",
@@ -29,8 +34,25 @@ export function CotasInvestimentoForm() {
         return Number(value) > 0;
       },
       message: "A quantidade de meses na aplicação deve ser maior do que 0.",
+    },
+    id_Investidor: {
+      value: [],
+      id: 'id_Investidor',
+      name: 'id_Investidor',
+      type: 'number',
+      placeholder: 'Investidor',
     }
   })
+
+  useEffect(() => {
+    getInvestidoresAtivos();
+  }, [])
+
+  function getInvestidoresAtivos() {
+    investidoresService.getAllInvestidoresAtivos().then((response) => {
+      setInvestidoresAtivos(response.data.investidores);
+    })
+  }
 
   const navigate = useNavigate();
 
@@ -58,7 +80,9 @@ export function CotasInvestimentoForm() {
       return;
     }
 
-    const requestBody = forms.toValues(formDataValidated);
+    const formsValues = forms.toValues(formDataValidated);
+
+    const requestBody = {...formsValues, id_Investidor: formsValues.id_Investidor.id_Investidor}
 
     let request = cotasServices.registerCotaInvestimento(requestBody);
 
@@ -79,11 +103,29 @@ export function CotasInvestimentoForm() {
 
       <form onSubmit={handleSubmit}>
         <div className='mb-4'>
+        <FormSelect
+                {...formData.id_Investidor}
+                className='form-control'
+                options={investidoresAtivos}
+                onChange={(obj: any) => {
+                  const newFormData = forms.updateAndValidate(
+                    formData,
+                    'id_Investidor',
+                    obj
+                  );
+                  setFormData(newFormData);
+                }}
+                getOptionLabel={(obj: any) => `${obj.nome} ${obj.sobrenome}`}
+                getOptionValue={(obj: any) => String(obj.id_Investidor)}
+                onTurnDirty={handleTurnDirty}
+              />
+        </div>
+        <div className='mb-4'>
           <FormInput
             {...formData.valor_Aplicado}
             className='w-full pl-4 pr-4 pt-3 pb-3 rounded-xl form-control base-input'
             onChange={handleInputChange}
-            onTurnDirty={handleTurnDirty}
+            onTurnDirty={handleTurnDirty}                
           />
           <div className='form-error semi-bold'>
             {formData.valor_Aplicado.message}

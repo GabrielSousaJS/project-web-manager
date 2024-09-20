@@ -1,6 +1,6 @@
 export type ResponseCotasInvestimento = {
   id_Cota?: number;
-  id_investidor: number;
+  id_Investidor: number;
   nome: string;
   sobrenome: string;
   valor_Aplicado: number;

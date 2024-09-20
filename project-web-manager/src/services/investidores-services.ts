@@ -24,6 +24,16 @@ export async function getAllInvestidores(page: number) {
   return await requestBackend(config);
 }
 
+export async function getAllInvestidoresAtivos() {
+  const config: AxiosRequestConfig = {
+    method: 'GET',
+    url: 'investidores/ativos',
+    withCredentials: true,
+  }
+
+  return await requestBackend(config);
+}
+
 export async function acceptInvestidor(id: number, data: any) {
   const config: AxiosRequestConfig = {
     method: 'PUT',
