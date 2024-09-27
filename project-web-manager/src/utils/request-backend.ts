@@ -19,7 +19,7 @@ export async function requestAsyncBackend(config: AxiosRequestConfig) {
     ? {
         ...config.headers,
         Authorization: `Bearer ${loginService.getAccessToken()}`,
-      }
+      } 
     : config.headers;
 
   return await axios({ ...config, baseURL: BASE_URL, headers });

@@ -1,3 +1,5 @@
+import './styles.css';
+
 import logo from '../../../assets/images/logo.png';
 import { Button } from "@/components/ui/button";
 import { useContext, useState } from "react";
@@ -10,7 +12,7 @@ import * as loginService from "@/services/login-service";
 import { ContextToken } from '@/utils/context-token';
 
 export function Login() {
-  const {setContextTokenPayload} = useContext(ContextToken);
+  const { setContextTokenPayload } = useContext(ContextToken);
 
   const [formData, setFormData] = useState({
     username: {
@@ -86,51 +88,53 @@ export function Login() {
   }
 
   return (
-    <main className='modal-center-box p-4 rounded-xl'>
-      <div className='flex justify-center mb-4'>
-        <img src={logo} alt="Logo RSX Capital" />
-      </div>
+    <main className='bg-blue w-screen h-screen'>
+      <div className='modal-center-box p-4 rounded-xl'>
+        <div className='flex justify-center mb-4'>
+          <img src={logo} alt="Logo RSX Capital" />
+        </div>
 
-      <div className='mb-4'>
-        <h4 className='text-3xl'>Login</h4>
-      </div>
+        <div className='mb-4'>
+          <h4 className='text-3xl'>Login</h4>
+        </div>
 
-      {errorMessage != '' ? (<div className='mb-4 text-red-600 font-semibold'>
-        <h6>{errorMessage}</h6>
-      </div>) : <div></div>}
+        {errorMessage != '' ? (<div className='mb-4 text-red-600 font-semibold'>
+          <h6>{errorMessage}</h6>
+        </div>) : <div></div>}
 
 
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <FormInput
-            {...formData.username}
-            className="w-full pl-4 pr-4 pt-3 pb-3 rounded-xl form-control base-input"
-            onChange={handleInputChange}
-            onTurnDirty={handleTurnDirty}
-          />
-          <div className="form-error semi-bold">
-            {formData.username.message}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <FormInput
+              {...formData.username}
+              className="w-full pl-4 pr-4 pt-3 pb-3 rounded-xl form-control base-input"
+              onChange={handleInputChange}
+              onTurnDirty={handleTurnDirty}
+            />
+            <div className="form-error semi-bold">
+              {formData.username.message}
+            </div>
           </div>
-        </div>
 
-        <div className="mb-4">
-          <FormPassword
-            {...formData.senha}
-            className="w-full form-control base-input"
-            onChange={handleInputChange}
-            onTurnDirty={handleTurnDirty}
-            onChangeType={handleChangeType}
-            onKeyDown={handleKeyDown}
-          />
-          <div className="form-error semi-bold">
-            {formData.senha.message}
+          <div className="mb-4">
+            <FormPassword
+              {...formData.senha}
+              className="w-full form-control base-input"
+              onChange={handleInputChange}
+              onTurnDirty={handleTurnDirty}
+              onChangeType={handleChangeType}
+              onKeyDown={handleKeyDown}
+            />
+            <div className="form-error semi-bold">
+              {formData.senha.message}
+            </div>
           </div>
-        </div>
 
-        <div className='text-center'>
-          <Button type="submit" className='w-full rounded-xl button-color hover:bg-blue-900 pt-6 pb-6 text-lg'>LOGIN</Button>
-        </div>
-      </form>
+          <div className='text-center'>
+            <Button type="submit" className='w-full rounded-xl button-color hover:bg-blue-900 pt-6 pb-6 text-lg'>LOGIN</Button>
+          </div>
+        </form>
+      </div>
     </main>
   );
 }

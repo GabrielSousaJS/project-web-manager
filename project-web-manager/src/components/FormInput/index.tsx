@@ -4,6 +4,7 @@ export default function FormInput(props: any) {
     invalid = "false",
     dirty = "false",
     onTurnDirty,
+    className,
     ...inputProps
   } = props;
 
@@ -17,6 +18,7 @@ export default function FormInput(props: any) {
       onBlur={handleBlur}
       data-dirty={dirty}
       data-invalid={invalid}
+      className={`${className} placeholder:text-gray-600`}
     />
   );
 }

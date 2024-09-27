@@ -26,7 +26,7 @@ export function FormPassword(props: any) {
     >
       <input
         {...inputProps}
-        className="w-full pl-4 pr-4 pt-3 pb-3 rounded-xl password-input"
+        className="w-full pl-4 pr-4 pt-3 pb-3 rounded-xl password-input placeholder:text-gray-600"
         type={inputProps.type}
         onBlur={handleBlur}
       />
