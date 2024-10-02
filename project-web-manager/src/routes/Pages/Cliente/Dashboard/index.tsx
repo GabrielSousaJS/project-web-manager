@@ -110,7 +110,7 @@ export function Dashboard() {
   );
 
   return (
-    <main className='w-full mx-auto'>\
+    <main className='w-full mx-auto'>
       <div className='container mb-4'>
         <div className='text-center mb-2'>
           <h1 className='text-3xl font-bold md:text-4xl mb-4'>Rendimento gerado</h1>
