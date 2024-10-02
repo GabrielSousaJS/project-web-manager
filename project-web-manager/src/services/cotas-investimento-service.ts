@@ -14,6 +14,19 @@ export async function getAllCotasInvestimento(page: number) {
   return await requestBackend(config);
 }
 
+export async function getByInvestidorCotasInvestimento(page: number) {
+  const config: AxiosRequestConfig = {
+    method: 'GET',
+    url: 'cotasinvestimento/investidor',
+    withCredentials: true,
+    headers: {
+      page
+    }
+  };
+
+  return await requestBackend(config);
+}
+
 export async function getByIdCotaInvestimento(id_Cota: number) {
   const config: AxiosRequestConfig = {
     method: 'GET',

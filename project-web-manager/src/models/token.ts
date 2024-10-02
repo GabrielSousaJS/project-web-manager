@@ -1,4 +1,4 @@
-export type RoleEnum = "1"| "2";
+export type RoleEnum = '1' | '2';
 
 export type AccessTokenPayload = {
   exp: number;

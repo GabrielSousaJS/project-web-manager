@@ -13,13 +13,20 @@ export function CotasInvestimento() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (loginService.isAuthenticated()) {
+    if (loginService.isAuthenticated() && loginService.hasAnyRole(['1']))
       getAllCotasInvestimento(0);
-    }
+    else if (loginService.isAuthenticated())
+      getByInvestidorCotasInvestimento(0);
   }, [])
 
   function getAllCotasInvestimento(pageNumber: number) {
     cotasService.getAllCotasInvestimento(pageNumber + 1).then((response) => {
+      setCotasInvestimento(response.data);
+    })
+  }
+
+  function getByInvestidorCotasInvestimento(pageNumber: number) {
+    cotasService.getByInvestidorCotasInvestimento(pageNumber + 1).then((response) => {
       setCotasInvestimento(response.data);
     })
   }
@@ -65,7 +72,7 @@ export function CotasInvestimento() {
       </div>
 
       <div className='mb-4'>
-        {cotasInvestimento?.cotasInvestimento.length !== 0 && (<Pagination pageCount={cotasInvestimento ? cotasInvestimento.totalPages : 0} range={3} onChange={getAllCotasInvestimento} />)}
+        {cotasInvestimento?.cotasInvestimento.length !== 0 && (<Pagination pageCount={cotasInvestimento ? cotasInvestimento.totalPages : 0} range={3} onChange={loginService.hasAnyRole(['1']) ? getAllCotasInvestimento : getByInvestidorCotasInvestimento} />)}
       </div>
     </main>
   );
