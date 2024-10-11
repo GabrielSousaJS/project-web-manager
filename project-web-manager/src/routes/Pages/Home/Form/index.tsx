@@ -76,6 +76,8 @@ export function Form() {
     { value: '6000+', label: '6000+' },
   ];
 
+  const [submitResponseFail, setSubmitResponseFail] = useState(false);
+
   function handleTurnDirty(name: string) {
     setFormData(forms.dirtyAndValidate(formData, name));
   }
@@ -88,6 +90,8 @@ export function Form() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    setSubmitResponseFail(false);
 
     const formDataValidated = forms.dirtyAndValidateAll(formData);
 
@@ -114,7 +118,9 @@ export function Form() {
     const request = investidorService.registerInvestidor(requestBody);
 
     request.then(() => {
-      navigate('pos-register')
+      navigate('after-form')
+    }).catch(() => {
+      setSubmitResponseFail(true);
     });
   }
 
@@ -140,6 +146,11 @@ export function Form() {
         </div>
         <div className='flex-1'>
           <form onSubmit={handleSubmit}>
+            {submitResponseFail && (
+              <div className='font-semibold text-red-700 mb-2'>
+                E-mail já está em uso.
+              </div>
+            )}
             <div className="mb-4">
               <FormInput
                 {...formData.nome}

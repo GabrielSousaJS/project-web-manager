@@ -37,6 +37,8 @@ export function CreateUser() {
 
   const navigate = useNavigate();
 
+  const [submitResponseFail, setSubmitResponseFail] = useState(false);
+
   function handleTurnDirty(name: string) {
     setFormData(forms.dirtyAndValidate(formData, name));
   }
@@ -55,6 +57,8 @@ export function CreateUser() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    setSubmitResponseFail(false);
+
     const formDataValidated = forms.dirtyAndValidateAll(formData);
 
     if (forms.hasAnyInvalid(formDataValidated)) {
@@ -68,6 +72,8 @@ export function CreateUser() {
 
     request.then(() => {
       navigate('/pos-register-user');
+    }).catch(() => {
+      setSubmitResponseFail(true);
     })
   }
 
@@ -83,6 +89,11 @@ export function CreateUser() {
         </div>
 
         <form onSubmit={handleSubmit}>
+          {submitResponseFail && (
+            <div className='font-semibold text-red-700 mb-2'>
+              E-mail já está em uso.
+            </div>
+          )}
           <div className="mb-4">
             <FormInput
               {...formData.username}

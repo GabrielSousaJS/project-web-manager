@@ -20,6 +20,7 @@ import { Dashboard } from './routes/Pages/Cliente/Dashboard';
 import Usuarios from './routes/Pages/Cliente/Usuarios';
 import { NotFound } from './routes/Pages/NotFound';
 import { PrivateRoute } from './components/PrivateRoute';
+import { AfterFillingForm } from './routes/Pages/AfterFillingForm';
 
 export function App() {
   const [contextTokenPayload, setContextTokenPayload] = useState<AccessTokenPayload>();
@@ -36,6 +37,7 @@ export function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='after-form' element={<AfterFillingForm />} />
           <Route path='create-user' element={<CreateUser />} />
           <Route path='login' element={<Login />} />
           <Route path='pos-login'
