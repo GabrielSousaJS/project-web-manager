@@ -91,7 +91,7 @@ export function CreateUser() {
         <form onSubmit={handleSubmit}>
           {submitResponseFail && (
             <div className='font-semibold text-red-700 mb-2'>
-              E-mail já está em uso.
+              Verifque o e-mail e tente novamente.
             </div>
           )}
           <div className="mb-4">

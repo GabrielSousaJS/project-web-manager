@@ -39,14 +39,14 @@ export default function Usuarios() {
         </div>
       </div>
       <div className='space-y-4 pt-2 mb-4'>
-        {usuarios?.usuarios.map((usuario) => (
+        {usuarios?.usuarios !== undefined ? (usuarios.usuarios.map((usuario) => (
           <div className="border-b-2 pb-2" key={usuario.id_Usuario}>
             <UserCard usuario={usuario} />
           </div>
-        ))}
+        ))) : (<p></p>)}
       </div>
       <div className='mb-4'>
-        {usuarios?.usuarios.length !== 0 && (<Pagination pageCount={usuarios ? usuarios.totalPages : 0} range={3} onChange={getAllUser} />)}
+        {usuarios?.usuarios !== undefined && (<Pagination pageCount={usuarios ? usuarios.totalPages : 0} range={3} onChange={getAllUser} />)}
       </div>
     </main>
   );

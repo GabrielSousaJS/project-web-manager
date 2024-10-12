@@ -66,13 +66,13 @@ export function CotasInvestimento() {
         )}
       </div>
       <div className='space-y-4 pt-2 mb-4'>
-        {cotasInvestimento?.cotasInvestimento.map((cota) => (<div className='border-b-2 pb-2' key={cota.id_Cota}>
+        {cotasInvestimento?.cotasInvestimento !== undefined ? (cotasInvestimento.cotasInvestimento.map((cota) => (<div className='border-b-2 pb-2' key={cota.id_Cota}>
           <CotaInvestimentoCard cotaInvestimento={cota} />
-        </div>))}
+        </div>))) : (<p></p>)}
       </div>
 
       <div className='mb-4'>
-        {cotasInvestimento?.cotasInvestimento.length !== 0 && (<Pagination pageCount={cotasInvestimento ? cotasInvestimento.totalPages : 0} range={3} onChange={loginService.hasAnyRole(['1']) ? getAllCotasInvestimento : getByInvestidorCotasInvestimento} />)}
+        {cotasInvestimento?.cotasInvestimento !== undefined && (<Pagination pageCount={cotasInvestimento ? cotasInvestimento.totalPages : 0} range={3} onChange={loginService.hasAnyRole(['1']) ? getAllCotasInvestimento : getByInvestidorCotasInvestimento} />)}
       </div>
     </main>
   );

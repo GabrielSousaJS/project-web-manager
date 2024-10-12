@@ -68,13 +68,22 @@ export function Pagamento() {
         )}
       </div>
       <div className='space-y-4 pt-2 mb-4'>
-        {pagamentos?.pagamentos.map((pagamento) => (<div className='border-b-2 pb-2' key={pagamento.id_pagamento}>
-          <PagamentoCard pagamentoCard={pagamento} />
-        </div>))}
+        {pagamentos?.pagamentos !== undefined ? (
+          pagamentos.pagamentos.map((pagamento) => (
+            <div className='border-b-2 pb-2' key={pagamento.id_pagamento}>
+              <PagamentoCard pagamentoCard={pagamento} />
+            </div>
+          ))
+        ) : (<p></p>)}
+      </div>
+      <div className='mb-4'>
+        {pagamentos && pagamentos.pagamentos?.length > 0 && (
+          <Pagination pageCount={pagamentos.totalPages} range={3} onChange={getAllPagamentos} />
+        )}
       </div>
 
       <div className='mb-4'>
-        {pagamentos?.pagamentos.length !== 0 && (<Pagination pageCount={pagamentos ? pagamentos.totalPages : 0} range={3} onChange={getAllPagamentos} />)}
+        {pagamentos?.pagamentos !== undefined && (<Pagination pageCount={pagamentos ? pagamentos.totalPages : 0} range={3} onChange={getAllPagamentos} />)}
       </div>
     </main>
   );

@@ -49,13 +49,13 @@ export function Cadastro() {
         </div>
       </div>
       <div className='space-y-4 pt-2 mb-4'>
-        {investidores?.investidores.map((investidor) => (<div className='border-b-2 pb-2' key={investidor.id_Investidor}>
+        {investidores?.investidores !== undefined ? (investidores.investidores.map((investidor) => (<div className='border-b-2 pb-2' key={investidor.id_Investidor}>
           <InvestidorCard investidor={investidor} />
-        </div>))}
+        </div>))) : (<p></p>)}
       </div>
 
       <div className='mb-4'>
-        {investidores?.investidores.length !== 0 && (<Pagination pageCount={investidores ? investidores.totalPages : 0} range={3} onChange={getAllInvestidores} />)}
+        {investidores?.investidores !== undefined && (<Pagination pageCount={investidores ? investidores.totalPages : 0} range={3} onChange={getAllInvestidores} />)}
       </div>
     </main>
   );
